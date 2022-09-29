@@ -1,1 +1,18 @@
 /* Desenvolva a estilização da sua página aqui */
+/* main{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+} */
+
+main{
+    /* display: flex;
+    flex-direction: column;
+    gap: 1rem */
+}
+
+
+
+li{
+    height: 42px;
+}
