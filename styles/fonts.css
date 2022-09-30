@@ -17,6 +17,7 @@
 .font-text-1{
     font-size: var(--font-text-1);
     font-weight: var(--font-weight-3);
+    line-height: var(--font-line-height-1);
 }
 .font-text-2{
     font-size: var(--font-text-2);

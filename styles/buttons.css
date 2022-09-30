@@ -1,4 +1,7 @@
 .button-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 2rem;
   width: max-content;
   padding: 0px 14px;
@@ -18,16 +21,18 @@
 }
 
 .button-secundary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 2rem;
   width: max-content;
   padding: 0px 14px;
   font-weight: var(--font-weight-2);
-  font-size: 14px;
-  line-height: 17px;
+  font-size: var(--font-size-3);
   background-color: var(--color-white);
-  border: 2px solid var(--color-grey-5);
   color: var(--color-grey-2);
-  border-radius: var(--radius-1);
+  border: 2px solid var(--color-grey-5);
+   border-radius: var(--radius-1);
   cursor: pointer;
 }
 .button-secundary:hover {
@@ -42,6 +47,21 @@
   align-items: center;
   width: 135px;
   height: 26px;
+}
+.trash{
+  background-image: url(../assets/trash.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 28.25px;
+  height: 26px;
+  border: 1.5px solid var(--color-grey-5);
+  border-radius: 8px;
+}
+
+.trash:hover{
+  background-image: url(../assets/trash_hover.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .box-button > div {

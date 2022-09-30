@@ -4,6 +4,7 @@ header {
   left: 0;
   z-index: 1; */
   width: 100%;
+  max-width: 100%;
   padding: 1.75rem 0;
   height: 6rem;
   margin: 0 auto;

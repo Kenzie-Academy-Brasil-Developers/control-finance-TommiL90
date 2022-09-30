@@ -8,11 +8,30 @@
 main{
     /* display: flex;
     flex-direction: column;
-    gap: 1rem */
+    gap: 1rem; */
 }
-
 
 
 li{
     height: 42px;
 }
+
+@media (max-width: 700px) {
+    .container {
+      max-width: 43rem;
+      margin: 0 1rem;
+    }
+  
+    .resposive-display{
+      flex-direction: column;
+    }
+  
+    .responsive-header-parameters{
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 0.875rem
+    }
+    .resposive-width{
+      width: 100%;
+    }
+  }
