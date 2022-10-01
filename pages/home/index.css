@@ -35,3 +35,27 @@ li{
       width: 100%;
     }
   }
+
+  .formTeste{
+
+  }
+
+  .formTest label{
+    border: 2px solid black;
+    background-color: blue;
+    height: 2rem;
+    width: 5rem;
+  }
+
+  .formTeste input{
+    /* display: none; */
+    
+  }
+
+  .formTeste input:checked + label{
+    background-color: aquamarine;
+    
+  }
+  .formTeste{
+    
+  }

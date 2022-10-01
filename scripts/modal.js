@@ -1,19 +1,4 @@
-/* Desenvolva sua lógica aqui */
-
-// const buttonsControllersModal = document.querySelectorAll(
-//   "[data-control-modal]"
-// );
-
-// for (let index = 0; index < buttonsControllersModal.length; index++) {
-//   buttonsControllersModal[index].addEventListener("click", () => {
-//     let modalId =
-//       buttonsControllersModal[index].getAttribute("data-control-modal");
-//     document.getElementById(modalId).classList.toggle("show-modal");
-//   });
-// }
-
 function createModal() {
-
   const modalWrapper = document.createElement("div");
   modalWrapper.classList = "modal-wrapper";
   //   modalWrapper.id = "modal-cadastro";
@@ -24,10 +9,8 @@ function createModal() {
 
   const modalHeader1 = modalHeader();
   const modalBody1 = modalBody();
-  const modalSelect1 = modalSelect();
-  const modalFooter1 = modalFooter();
 
-  modal.append(modalHeader1, modalBody1, modalSelect1, modalFooter1);
+  modal.append(modalHeader1, modalBody1);
   modalWrapper.appendChild(modal);
 
   //   console.log(modal)
@@ -35,8 +18,6 @@ function createModal() {
   //   body.appendChild(modal);
 }
 createModal();
-
-
 
 function modalHeader() {
   const modalHeader = document.createElement("div");
@@ -65,6 +46,7 @@ function modalBody() {
     "Digite o valor e em seguida aperte no botão referente ao tipo do valor.";
 
   const form = document.createElement("form");
+  form.type = "submit";
 
   let h4 = document.createElement("h4");
   h4.classList = "font-title-4";
@@ -78,79 +60,91 @@ function modalBody() {
   label.innerText = "R$";
 
   const input = document.createElement("input");
+  input.classList = "input-value";
   input.type = "number";
   input.name = "input-value";
   input.placeholder = "00,00";
 
-  boxInput.append(label, input);
-  form.append(h4, boxInput);
-  modalBody.append(p, form);
-
-  return modalBody;
-}
-
-function modalSelect() {
   const modalSelect = document.createElement("div");
-  modalSelect.classList = "section-modal";
+  modalSelect.classList = "section-modal flex";
 
-  let h4 = document.createElement("h4");
-  h4.classList = "font-title-4";
-  h4.innerText = "Tipo de valor";
+  let h4Radius = document.createElement("h4");
+  h4Radius.classList = "font-title-4";
+  h4Radius.innerText = "Tipo de valor";
 
-  const form = document.createElement("form");
-
-  const labelEnter = document.createElement("label");
-  labelEnter.classList = "button-secundary"
-  labelEnter.for = "enter";
-  labelEnter.innerText = "Entrada";
+  const divForm = document.createElement("div");
+  divForm.classList = "formTypeValue flex gap-1";
 
   const inputEnter = document.createElement("input");
   inputEnter.type = "radio";
   inputEnter.id = "enter";
   inputEnter.name = "value-type";
-  inputEnter.value = "entrada";
+  inputEnter.value = "1";
 
-  const labelExit = document.createElement("label");
-  labelExit.classList = "button-secundary"
-  labelExit.for = "exit";
-  labelExit.innerText = "Saida";
+  const labelEnter = document.createElement("label");
+  labelEnter.classList = "button-secundary";
+  labelEnter.for = "enter";
+  labelEnter.innerText = "Entrada";
 
   const inputExit = document.createElement("input");
   inputExit.type = "radio";
-  inputExit.id = "enter"
+  inputExit.id = "out";
   inputExit.name = "value-type";
-  inputExit.value = "saida";
+  inputExit.value = "2";
 
-  form.append(labelEnter, inputEnter, labelExit, inputExit);
-  modalSelect.append(h4, form);
+  const labelExit = document.createElement("label");
+  labelExit.classList = "button-secundary";
+  labelExit.for = "out";
+  labelExit.innerText = "Saida";
 
-  return modalSelect;
-}
-
-function modalFooter() {
   const modalFooter = document.createElement("div");
   modalFooter.classList = "modal-footer";
 
   const buttonCancel = document.createElement("button");
   buttonCancel.classList = "button-secundary";
-  buttonCancel.id= "cancel-modal"
+  buttonCancel.id = "cancel-modal";
   buttonCancel.innerText = "Cancelar";
 
   const buttonEnterValue = document.createElement("button");
-  buttonEnterValue.type = "submit"
+  buttonEnterValue.type = "submit";
   buttonEnterValue.classList = "button-primary addValue";
-  buttonEnterValue.innerText = "Inserir valor"
-
+  buttonEnterValue.innerText = "Inserir valor";
 
   modalFooter.append(buttonCancel, buttonEnterValue);
+  divForm.append(inputEnter, labelEnter, inputExit, labelExit);
+  modalSelect.append(h4Radius, divForm);
+  boxInput.append(label, input);
+  form.append(h4, boxInput, modalSelect, modalFooter);
+  modalBody.append(p, form);
 
-  return modalFooter;
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const formSubmit = [...e.target];
+    let valueInput = Number(formSubmit[0].value);
+    console.log(valueInput);
+    
+        formSubmit.forEach((e) => {
+          if (e.type == "radio" && e.checked) {
+          const newvalue = {
+          id: "ainda procurando o jeito certo",
+          value:  valueInput,
+          categoryID: e.value,
+       };
+            console.log(newvalue);
+              insertedValues.push(newvalue)
+              listarValues(insertedValues, tagUl)
+         }
+    });
+
+  });
+
+  return modalBody;
 }
 
 function showModal() {
   const modalButton = document.getElementById("button-register");
   const body = document.getElementsByTagName("body")[0];
-  
 
   modalButton.addEventListener("click", () => {
     const modal = createModal();
@@ -159,10 +153,11 @@ function showModal() {
     closeModal();
   });
 }
+showModal();
 
 function closeModal() {
   const closeModalButton = document.getElementById("close_modal");
-  const cancelButton = document.getElementById("cancel-modal")
+  const cancelButton = document.getElementById("cancel-modal");
   const modalContainer = document.getElementById("modal-container");
 
   closeModalButton.addEventListener("click", () => {
@@ -171,22 +166,7 @@ function closeModal() {
 
   cancelButton.addEventListener("click", () => {
     modalContainer.remove();
-  })
+  });
 }
 
-showModal();
 
-
-/**
-<form>
-    <p>Selecione o método de contato</p>
-
-    <label for="telefone">Telefone</label>
-    <input type="radio" value="telefone" name="inputExemplo" id="telefone">
-
-    <label for="e-mail">E-mail</label>
-    <input type="radio" value="email" name="inputExemplo" id="e-mail">
-
-    <button type="submit">Enviar</button>
-</form>
- */

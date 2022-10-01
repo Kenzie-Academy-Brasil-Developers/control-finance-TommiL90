@@ -7,12 +7,10 @@ function listarValues(lista, referenciaHtml) {
 
   referenciaHtml.innerHTML = "";
   totalPrice = 0
-
-  for (value of lista) {
-    let valueTemplate = criarTemplate(value);
-
-    referenciaHtml.appendChild(valueTemplate);
-  }
+  lista.forEach(e =>{
+    let valueTemplate1 = criarTemplate(e);
+    referenciaHtml.appendChild(valueTemplate1);
+  })
 }
 listarValues(insertedValues, tagUl);
 
@@ -60,12 +58,13 @@ function criarTemplate(element) {
         
             totalPrice -= value;
             document.getElementById("total-Price").innerHTML = `${totalPrice}`;
+           
           }  
  });
 
   totalPrice += value;
   document.getElementById("total-Price").innerHTML = `${totalPrice}`;
-
+ 
   return li;
 }
 
@@ -91,25 +90,27 @@ btnEvery.addEventListener("click", (e) => {
 btnEntries.addEventListener("click", (e) => {
   e.preventDefault();
 
-  let listaFiltrada = [];
-  for (value of insertedValues) {
-    if (value.categoryID == 1) {
-      listaFiltrada.push(value);
-    }
-  }
-  listarValues(listaFiltrada, tagUl);
+  // let listaFiltrada = [];
+  // for (value of insertedValues) {
+  //   if (value.categoryID == 1) {
+  //     listaFiltrada.push(value);
+  //   }
+  // }
+  const filterList = insertedValues.filter(e => e.categoryID == 1)
+  listarValues(filterList, tagUl);
 });
 
 btnExits.addEventListener("click", (e) => {
   e.preventDefault();
 
-  let listaFiltrada = [];
-  for (value of insertedValues) {
-    if (value.categoryID !== 1) {
-      listaFiltrada.push(value);
-    }
-  }
-  listarValues(listaFiltrada, tagUl);
+  // let listaFiltrada = [];
+  // for (value of insertedValues) {
+  //   if (value.categoryID !== 1) {
+  //     listaFiltrada.push(value);
+  //   }
+  // }
+  const filterList = insertedValues.filter(e => e.categoryID == 2)
+  listarValues(filterList, tagUl);
 });
 
 const removeoptional = (e) => {
@@ -126,4 +127,9 @@ const removeoptional = (e) => {
 };
 
 
+function sum () {
 
+  let value = insertedValues.reduce((acc, av) => { return acc + av.value}, 0)
+  
+  document.getElementById("total-Price").innerHTML = `${value}`;
+}
