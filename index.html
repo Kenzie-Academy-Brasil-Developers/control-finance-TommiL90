@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Control Finance</title>
+    <link
+      rel="shortcut icon"
+      href="../../assets/favicon.ico"
+      type="image/x-icon"
+    />
+    <meta
+      name="description"
+      content="Control Finance - Seu controle financeiro"
+    />
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/globalStyles.css" />
+    <link rel="stylesheet" href="./styles/fonts.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/buttons.css" />
+    <link rel="stylesheet" href="./styles/margins.css" />
+    <link rel="stylesheet" href="./styles/inputs.css" />
+    <link rel="stylesheet" href="./styles/menu.css" />
+    <link rel="stylesheet" href="./styles/displays.css" />
+    <link rel="stylesheet" href="./styles/sizes.css" />
+    <link rel="stylesheet" href="./styles/colors.css" />
+    <link rel="stylesheet" href="./styles/modal.css" />
+
+
+    <link rel="stylesheet" href="./pages/home/index.css" />
+  </head>
+  <body class="flex flex-col gap-2">
+    <header class="bg-color-grey-5">
+      <div class="flex justify-between items-center w-full resposive-display">
+        <h1 class="font-title-1">
+          <span class="color-primary">Control</span> Finance
+        </h1>
+        <button class="button-primary" id="button-register">Registrar nuevo valor</button>
+      </div>
+    </header>
+    <main id="app" class="container w-full h-container" >
+      <section class="flex justify-between items-center resposive-display responsive-header-parameters">
+        <h2 class="font-title-2">Resumo financeiro</h2>
+        <div class="flex gap-1">
+          <button id="every" class="button-secundary">Todos</button>
+          <button id="entries" class="button-secundary">Entradas</button>
+          <button id="exits" class="button-secundary">Saídas</button>
+        </div>
+      </section>
+      <section class="flex justify-between items-center padding bg-color-grey-5 border-default">
+        <h3 class="font-title-3">Soma dos valores</h3>
+        <div class="flex">
+          <p class="font-text-3">R$</p>
+          <p id="total-Price" class="font-text-3">00.00</p>
+        </div>
+      </section>
+      <section class="">
+        <ul id="ul" class="flex flex-col gap-1">
+          <li class="flex justify-between items-center border-default padding">
+            <div class="flex">
+              <p class="font-text-3">R$</p>
+              <p class="font-text-3 ofValue">00.00</p>
+            </div>
+            <div class="box-button ">
+              <button class="button-secundary bg-color-grey-4">Entrada</button>
+              <button class="trash"></button>
+            </div>
+          </li>
+          <li class="flex justify-between items-center border-default padding">
+            <p class="font-text-3">hdkshjf</p>
+            <div class="box-button ">
+              <button class="button-secundary bg-color-grey-4">Entrada</button>
+              <div><img src="../../assets/trash.svg" alt="" />
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <!-- <section>
+          <form action="" class="formTeste">
+            <label for="hola">hola</label>
+            <input type="radio" name="cumprimento" id="hola">
+            <label for="chao">chao</label>
+            <input type="radio" name="cumprimento" id="chao">
+          </form>
+        </section> -->
+      </section>
+    </main>
+
+    <script src="./scripts/modal.js"></script>
+  
+    <script src="./pages/home/valuesData.js"></script>
+    <script src="./pages/home/index.js"></script>
+  </body>
+</html>
