@@ -122,12 +122,15 @@ function modalBody() {
 
     const formSubmit = [...e.target];
     let valueInput = Number(formSubmit[0].value);
-    console.log(valueInput);
-    
+    // console.log(valueInput);
+    // console.log(e.target)
+    // console.log([e.target])
+    // console.log(...e.target)
+    // console.log([...e.target])
         formSubmit.forEach((e) => {
           if (e.type == "radio" && e.checked) {
           const newvalue = {
-          id: "ainda procurando o jeito certo",
+          id: insertedValues.length,
           value:  valueInput,
           categoryID: e.value,
        };

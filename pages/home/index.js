@@ -7,15 +7,17 @@ function listarValues(lista, referenciaHtml) {
 
   referenciaHtml.innerHTML = "";
   totalPrice = 0
-  lista.forEach(e =>{
-    let valueTemplate1 = criarTemplate(e);
+  lista.forEach((e, i) =>{
+    
+    let valueTemplate1 = criarTemplate(e, i);
     referenciaHtml.appendChild(valueTemplate1);
   })
 }
 listarValues(insertedValues, tagUl);
+console.log(insertedValues)
 
-function criarTemplate(element) {
-  let id = element.id;
+function criarTemplate(element, index) {
+  let id = index;
   let value = element.value;
   let categoryID = element.categoryID;
 
@@ -49,17 +51,23 @@ function criarTemplate(element) {
   li.append(tagDiv, tagDivButton);
 
  trashButton.addEventListener("click", (e) => {
-        let button = e.target
+        // let button = e.target
 
-        if (button.tagName == "BUTTON") {
-            let li = button.closest("li");
+        // if (button.tagName == "BUTTON") {
+        //     let li = button.closest("li");
         
-            li.remove();
+        //     li.remove();
         
-            totalPrice -= value;
-            document.getElementById("total-Price").innerHTML = `${totalPrice}`;
+        //     totalPrice -= value;
+        //     document.getElementById("total-Price").innerHTML = `${totalPrice}`;
            
-          }  
+        //   }  
+
+          totalPrice -= value;
+          document.getElementById("total-Price").innerHTML = `${totalPrice}`
+
+        insertedValues.splice(index, 1)
+        listarValues(insertedValues, tagUl)
  });
 
   totalPrice += value;
